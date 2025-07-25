@@ -1,1 +1,2 @@
-starting
+1st file in git 
+ltts step-in training
