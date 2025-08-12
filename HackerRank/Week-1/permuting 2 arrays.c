@@ -1,1 +1,49 @@
+#include <stdio.h>
+
+void sortAsc(int arr[], int n) {
+    for (int i = 0; i < n - 1; i++) {
+        for (int j = i + 1; j < n; j++) {
+            if (arr[i] > arr[j]) {
+                int t = arr[i];
+                arr[i] = arr[j];
+                arr[j] = t;
+            }
+        }
+    }
+}
+
+void sortDesc(int arr[], int n) {
+    for (int i = 0; i < n - 1; i++) {
+        for (int j = i + 1; j < n; j++) {
+            if (arr[i] < arr[j]) {
+                int t = arr[i];
+                arr[i] = arr[j];
+                arr[j] = t;
+            }
+        }
+    }
+}
+
+const char* checkArrays(int k, int A[], int B[], int n) {
+    sortAsc(A, n);
+    sortDesc(B, n);
+    for (int i = 0; i < n; i++) {
+        if (A[i] + B[i] < k) return "NO";
+    }
+    return "YES";
+}
+
+int main() {
+    int q;
+    scanf("%d", &q);
+    while (q--) {
+        int n, k;
+        scanf("%d %d", &n, &k);
+        int A[n], B[n];
+        for (int i = 0; i < n; i++) scanf("%d", &A[i]);
+        for (int i = 0; i < n; i++) scanf("%d", &B[i]);
+        printf("%s\n", checkArrays(k, A, B, n));
+    }
+    return 0;
+}
 
